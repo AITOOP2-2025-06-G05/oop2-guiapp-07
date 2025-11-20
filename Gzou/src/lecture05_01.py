@@ -1,9 +1,8 @@
-import numpy as np
 import cv2
 from my_module.k24101kk.lecture05_camera_image_capture import MyVideoCapture
 
-def lecture05_01():
 
+def lecture05_01():
     # カメラキャプチャ実行
     app = MyVideoCapture()
     app.run()
@@ -17,9 +16,9 @@ def lecture05_01():
     #     capture_img = cv2.imread('images/camera_capture.png')
 
     # 画像をローカル変数に保存
-    google_img : cv2.Mat = cv2.imread('images/google.png')
-    # capture_img : cv2.Mat = cv2.imread('images/camera_capture.png') # 動作テスト用なので提出時にこの行を消すこと
-    capture_img : cv2.Mat = app.get_img()
+    google_img: cv2.Mat = cv2.imread("Gzou/images/google.png")
+    # capture_img : cv2.Mat = cv2.imread('Gzou/images/camera_capture.png') # 動作テスト用なので提出時にこの行を消すこと
+    capture_img: cv2.Mat = app.get_img()
 
     g_hight, g_width, g_channel = google_img.shape
     c_hight, c_width, c_channel = capture_img.shape
@@ -38,10 +37,11 @@ def lecture05_01():
                 google_img[y, x] = capture_img[src_y, src_x]
 
     # 出力ファイル名（学籍番号固定）
-    student_id = 'k24101'
+    student_id = "k24101"
     out_fname = f"lecture05_01_{student_id}.png"
 
     # 書き込み処理
     cv2.imwrite(out_fname, google_img)
     print(f"saved: {out_fname}")
+
 # ...existing code...

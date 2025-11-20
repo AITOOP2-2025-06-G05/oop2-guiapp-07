@@ -77,10 +77,3 @@ class MyWindow(QWidget):
             QMessageBox.critical(
                 self, "エラー", f"グレースケール変換中にエラーが発生しました:\n{str(e)}"
             )
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MyWindow()
-    window.show()
-    sys.exit(app.exec())

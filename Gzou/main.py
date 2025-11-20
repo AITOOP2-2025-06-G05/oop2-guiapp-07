@@ -1,4 +1,11 @@
-from src.lecture05_01 import lecture05_01
+from window import MyWindow
+from PySide6.QtWidgets import (
+    QApplication,
+)
+import sys
 
 if __name__ == "__main__":
-    lecture05_01()
+    app = QApplication(sys.argv)
+    window = MyWindow()
+    window.show()
+    sys.exit(app.exec())

@@ -9,6 +9,7 @@ from PySide6.QtWidgets import (
 )
 import sys
 from src.grayscale import process_png_images
+from src.cap_image import cap_image
 
 class MyWindow(QWidget):
     def __init__(self):
@@ -29,6 +30,7 @@ class MyWindow(QWidget):
         button2 = QPushButton("白黒変換ボタン")
 
         # ボタンにイベントハンドラを接続
+        button1.clicked.connect(self.capture_image)
         button2.clicked.connect(self.convert_grayscale)
 
         # ボタンをレイアウトに追加
@@ -37,6 +39,20 @@ class MyWindow(QWidget):
 
         # ウィンドウにレイアウトを設定
         self.setLayout(layout)
+
+    def capture_image(self):
+        """画像を取得する"""
+        success, msg = cap_image(self.captured_image_path)
+
+        if not success:
+            QMessageBox.critical(self, "エラー", msg)
+            return
+
+        QMessageBox.information(
+            self,
+            "成功",
+            f"画像がキャプチャされました！\n\n保存先:\n{msg}",
+    )
 
     def convert_grayscale(self):
         """画像をグレースケール化する"""
